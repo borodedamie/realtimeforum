@@ -15,6 +15,10 @@ import AppHome from './components/AppHome.vue'
 
 Vue.use(Vuetify)
 
+import User from './Helpers/User'
+
+window.User = User
+console.log(User.id())
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -33,10 +37,12 @@ Vue.use(Vuetify)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 import router from './Router/router.js'
+
 const app = new Vue({
     el: '#app',
     components: {
-        AppHome
+        AppHome,
+        User
     },
     router
 
