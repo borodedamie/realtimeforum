@@ -10,7 +10,7 @@ class User {
 
 responseAfterLogin(response) {
     const access_token = response.data.access_token;
-    const username = response.data.user
+    const username = response.data.User
     if(Token.isValid(access_token)){
         AppStorage.store(username, access_token)
     }
