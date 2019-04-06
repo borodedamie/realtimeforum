@@ -1,37 +1,35 @@
 <template>
-     <v-form @submit.prevent="signup">
-         
-         <v-text-field
-         v-model="form.name"
-         label="Name"
-         type="text"
-         required
-         ></v-text-field>
-         <span class="red--text" v-if="errors.name">{{ errors.name[0] }}</span>
+    <form v-on:submit.prevent="Signup">
+        <v-text-field
+        v-model="form.name"
+        label="Name"
+        type="text"
+        required
+        ></v-text-field>
+        <span class="red--text" v-if="errors.name">{{ errors.name[0] }}</span>
 
-         <v-text-field
-         v-model="form.email"
-         label="E-mail"
-         type="email"
-         required
-         ></v-text-field>
-         <span class="red--text" v-if="errors.email">{{ errors.email[0] }}</span>
+        <v-text-field
+        v-model="form.email"
+        label="E-mail"
+        type="email"
+        required
+        ></v-text-field>
+        <span class="red--text" v-if="errors.email">{{ errors.email[0] }}</span>
 
-         <v-text-field
-         v-model="form.password"
-         label="Password"
-         type="password"
-         required
-         ></v-text-field>
-         <span class="red--text" v-if="errors.password">{{ errors.password[0] }}</span>
+        <v-text-field
+        v-model="form.password"
+        label="Password"
+        type="password"
+        required
+        ></v-text-field>
+        <span class="red--text" v-if="errors.password">{{ errors.password[0] }}</span>
 
-         <v-text-field
-         v-model="form.password_confirmation"
-         label="Confirm Password"
-         type="password"
-         required
-         ></v-text-field>
-         
+        <v-text-field
+        v-model="form.password_confirmation"
+        label="Confirm Password"
+        type="password"
+        required
+        ></v-text-field>
 
          <v-btn
         color="blue"
@@ -41,13 +39,12 @@
         <router-link to="/login">
             <v-btn color="green">Login</v-btn>
         </router-link>
-     </v-form>
+    </form>
 </template>
 
 <script>
 export default {
-
-    data(){
+    data() {
         return {
             form: {
                 name: null,
@@ -58,14 +55,14 @@ export default {
             errors: {}
         }
     },
+
     methods: {
-        signup(){
-            axios.post('/api/auth/signup', this.form)
+        Signup() {
+            axios.post('api/auth/signup', this.form)
             .then(response => User.responseAfterLogin(response))
             .catch(error => this.errors = error.response.data.errors)
         }
     }
-
 }
 </script>
 

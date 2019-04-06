@@ -1,5 +1,5 @@
-import Token from './Token'
-import AppStorage from './AppStorage'
+import Token from './Token.js'
+import AppStorage from './AppStorage.js'
 
 class User {
     login(data){ 
@@ -11,6 +11,7 @@ class User {
 responseAfterLogin(response) {
     const access_token = response.data.access_token;
     const username = response.data.User
+
     if(Token.isValid(access_token)){
         AppStorage.store(username, access_token)
     }
